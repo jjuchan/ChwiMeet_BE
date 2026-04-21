@@ -269,7 +269,9 @@ jobs:
       - name: Get Instance ID
         id: get_instance_id
         env:
-          EC2_INSTANCE_TAG_NAME: team1-backend
+          # GitHub Repository > Settings > Secrets and variables > Actions > Variables에 등록하세요.
+          # 등록하지 않을 경우 기본값으로 'chwimeet-backend'를 사용합니다.
+          EC2_INSTANCE_TAG_NAME: ${{ vars.EC2_INSTANCE_TAG_NAME || 'chwimeet-backend' }}
         run: |
           set -e
           
