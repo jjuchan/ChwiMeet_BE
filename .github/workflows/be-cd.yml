@@ -53,9 +53,7 @@ jobs:
 
       # gradle wrapper 보안 검증
       - name: Validate Gradle Wrapper
-        uses: gradle/wrapper-validation-action@v2
-        with:
-          gradle-wrapper-path: backend/gradle/wrapper/gradle-wrapper.jar
+        uses: gradle/wrapper-validation-action@v3
 
       # Gradle 실행 JVM(JDK 24)
       - name: Setup Java (Gradle JVM = 24)
