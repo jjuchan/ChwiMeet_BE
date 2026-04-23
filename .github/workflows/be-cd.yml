@@ -306,13 +306,13 @@ jobs:
 
           echo "Target instance: ${{ env.INSTANCE_ID }}"
 
-          # SSM을 통해 배포 스크립트 실행 (ec2-user로)
+          # SSM을 통해 배포 스크립트 실행
           COMMAND_ID=$(aws ssm send-command \
             --instance-ids "${{ env.INSTANCE_ID }}" \
             --document-name "AWS-RunShellScript" \
-            --comment "Blue-Green deployment as ec2-user" \
+            --comment "Blue-Green deployment" \
             --timeout-seconds 600 \
-            --parameters 'commands=["set -e","sudo -u ec2-user bash -c \"cd /home/ec2-user/app && bash /home/ec2-user/app/deploy.sh\""]' \
+            --parameters 'commands=["set -e","cd /home/ec2-user/app && bash deploy.sh"]' \
             --query 'Command.CommandId' \
             --output text)
 
